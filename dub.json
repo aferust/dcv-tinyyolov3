@@ -1,0 +1,23 @@
+{
+	"authors": [
+		"user"
+	],
+	"copyright": "Copyright © 2023, user",
+	"description": "A minimal D application.",
+	"license": "proprietary",
+	"name": "tinyyolovideo",
+	"dependencies": {
+        "dcv:core": {"path": "D:/projects/d_projects/dub/packages/dcv"},
+		"dcv:plot": {"path": "D:/projects/d_projects/dub/packages/dcv"},
+        "bindbc-onnxruntime": {"path": "D:/projects/d_projects/dub/packages/bindbc-onnxruntime"}
+    },
+    "stringImportPaths": [
+		"fonts"
+	],
+	"subConfigurations": {
+		"dcv:plot": "use-glfw-d"
+	},
+	"comment-versions": [
+		"WITH_CUDA"
+	]
+}
