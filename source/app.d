@@ -20,7 +20,7 @@ enum H = 480;
 void main()
 {
     // for video file as input
-    auto pipes = pipeProcess(["ffmpeg", "-i", "Pexels Videos 2053100.mp4", "-vf", "scale=640:480", "-f", "image2pipe",
+    auto pipes = pipeProcess(["ffmpeg", "-y", "-hwaccel", "auto", "-i", "Pexels Videos 2053100.mp4", "-vf", "scale=640:480", "-r", "18", "-f", "image2pipe",
      "-vcodec", "rawvideo", "-pix_fmt", "rgb24", "-"], // yuv420p
         Redirect.stdout);
     // for camera device as input
@@ -39,7 +39,7 @@ void main()
 
     //////////////////// init model ///////////////////
     const support = loadONNXRuntime();
-    if (support == ONNXRuntimeSupport.noLibrary || support == ONNXRuntimeSupport.badLibrary)
+    if (support == ONNXRuntimeSupport.noLibrary /*|| support == ONNXRuntimeSupport.badLibrary*/)
     {
         writeln("Please download library from https://github.com/microsoft/onnxruntime/releases");
         return;
@@ -69,9 +69,10 @@ void main()
     checkStatus(ort.CreateSessionOptions(&session_options));
     scope (exit)
         ort.ReleaseSessionOptions(session_options);
-    ort.SetIntraOpNumThreads(session_options, 1);
+    ort.SetIntraOpNumThreads(session_options, 4);
+    ort.SetSessionLogSeverityLevel(session_options, 4);
 
-    ort.SetSessionGraphOptimizationLevel(session_options, GraphOptimizationLevel.ORT_ENABLE_BASIC);
+    ort.SetSessionGraphOptimizationLevel(session_options, GraphOptimizationLevel.ORT_ENABLE_ALL);
     
     //OrtSessionOptionsAppendExecutionProvider_CUDA(session_options, 0);
     

@@ -7,17 +7,14 @@
 	"license": "proprietary",
 	"name": "tinyyolovideo",
 	"dependencies": {
-        "dcv:core": {"path": "D:/projects/d_projects/dub/packages/dcv"},
-		"dcv:plot": {"path": "D:/projects/d_projects/dub/packages/dcv"},
-        "bindbc-onnxruntime": {"path": "D:/projects/d_projects/dub/packages/bindbc-onnxruntime"}
+        "dcv:core": "~master",
+		"dcv:plot": "~master",
+        "bindbc-onnxruntime": "~master"
     },
     "stringImportPaths": [
 		"fonts"
 	],
 	"subConfigurations": {
 		"dcv:plot": "use-glfw-d"
-	},
-	"comment-versions": [
-		"WITH_CUDA"
-	]
+	}
 }
