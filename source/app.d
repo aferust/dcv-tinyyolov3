@@ -2,7 +2,7 @@
 import std.stdio;
 import std.process;
 import std.datetime.stopwatch : StopWatch;
-import std.conv;
+import std.conv : to;
 
 import dcv.core;
 import dcv.imgproc;
@@ -20,7 +20,7 @@ enum H = 480;
 void main()
 {
     // for video file as input
-    auto pipes = pipeProcess(["ffmpeg", "-y", "-hwaccel", "auto", "-i", "Pexels Videos 2053100.mp4", "-vf", "scale=640:480", "-r", "18", "-f", "image2pipe",
+    auto pipes = pipeProcess(["ffmpeg", "-y", "-hwaccel", "auto", "-i", "pexels-tim-samuel-5834623.mp4", "-vf", "scale=640:480", "-r", "18", "-f", "image2pipe",
      "-vcodec", "rawvideo", "-pix_fmt", "rgb24", "-"], // yuv420p
         Redirect.stdout);
     // for camera device as input
