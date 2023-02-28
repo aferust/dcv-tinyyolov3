@@ -9,7 +9,7 @@
 	"dependencies": {
         "dcv:core": "~master",
 		"dcv:plot": "~master",
-        "bindbc-onnxruntime": "~master"
+        "bindbc-onnxruntime": {"repository": "git+https://github.com/aferust/bindbc-onnxruntime.git", "version": "~master"} 
     },
     "stringImportPaths": [
 		"fonts"
