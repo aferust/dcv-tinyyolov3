@@ -16,5 +16,6 @@
 	],
 	"subConfigurations": {
 		"dcv:plot": "use-glfw-d"
-	}
+	},
+	"comment-versions": ["WITH_CUDA"]
 }

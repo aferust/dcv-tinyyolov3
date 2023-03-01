@@ -20,7 +20,7 @@ enum H = 480;
 void main()
 {
     // for video file as input
-    auto pipes = pipeProcess(["ffmpeg", "-y", "-hwaccel", "auto", "-i", "pexels-tim-samuel-5834623.mp4", "-vf", "scale=640:480", "-r", "18", "-f", "image2pipe",
+    auto pipes = pipeProcess(["ffmpeg", "-y", "-hwaccel", "auto", "-i", "pexels-tim-samuel-5834623.mp4", "-vf", "scale=640:480", "-r", "20", "-f", "image2pipe",
      "-vcodec", "rawvideo", "-pix_fmt", "rgb24", "-"], // yuv420p
         Redirect.stdout);
     // for camera device as input
@@ -73,7 +73,7 @@ void main()
     ort.SetSessionLogSeverityLevel(session_options, 4);
 
     ort.SetSessionGraphOptimizationLevel(session_options, GraphOptimizationLevel.ORT_ENABLE_ALL);
-    
+    ort.SetSessionExecutionMode(session_options, ExecutionMode.ORT_PARALLEL);
     //OrtSessionOptionsAppendExecutionProvider_CUDA(session_options, 0);
     
     OrtSession* session;
